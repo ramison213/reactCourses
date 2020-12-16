@@ -8,12 +8,13 @@ const friends = [
   { id: 117, name: 'Doug' },
 ];
 
-const List = (props) => {
+const List = ({friends}) => {
   // Render a list using the "friends" being passed in.
   // prettier-ignore
+
   return (
     <ul>
-      {props.friends.map(friend => <li key={friend.id}>{friend.name}</li>)}
+      {friends.map(friend => <li key={friend.id}>{friend.name}</li>)}
     </ul>
   );
 };
