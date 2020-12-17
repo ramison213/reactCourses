@@ -6,7 +6,7 @@ class FIO extends React.Component {
     this.state = { name: '', patronymic: '', surname: '' };
 
     /* change code below this line */
-
+    this.onNameChange = this.onNameChange.bind(this);
     /* change code above this line */
   }
 
@@ -27,7 +27,7 @@ class FIO extends React.Component {
   }
 
   // your code is here
-  onPatronymicChange(e) {
+  onPatronymicChange = (e) => {
     const value = e.target.value;
     this.setState({ patronymic: value });
   }
@@ -41,8 +41,7 @@ class FIO extends React.Component {
     const {
       state: { name, patronymic, surname },
       onNameChange,
-      onPatronymicChange,
-      onSurnameChange,
+      onPatronymicChange
     } = this;
     return (
       <form onSubmit={this.onSubmit}>
@@ -61,7 +60,7 @@ class FIO extends React.Component {
           <input
             type="text"
             value={surname}
-            onChange={/*your code is here*/ onSurnameChange}
+            onChange={/*your code is here*/(e) => this.onSurnameChange(e)}
           />
         </label>
         <br />

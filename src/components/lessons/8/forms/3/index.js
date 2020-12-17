@@ -39,8 +39,51 @@ class UncontrolledForm extends React.Component {
 
 class ControlledForm extends React.Component {
   // your code is here
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      email: '',
+      agreeCheckbox: false
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (!this.state.email) {
+      alert(`enter valid email first, please`);
+    }
+
+    if (this.state.agreeCheckbox) {
+      alert(`email: ${this.state.email}`);
+    } else {
+      alert(`agree, please`);
+    }
+  };
+
+  handleChangeInput = (event) => {
+    this.setState({
+      email: event.target.value,
+    });
+  }
+
+  handleToggleCheckbox = (event) => {
+    this.setState({
+      agreeCheckbox: event.target.checked,
+    });
+  }
+
   render() {
-    return null;
+    return (
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <input type="email" value={this.state.email} onChange={this.handleChangeInput} />
+          <input type="checkbox" checked={this.state.agreeCheckbox} onChange={this.handleToggleCheckbox}/>
+          <button>Submit</button>
+        </form>
+      </>
+    );
   }
 }
 
